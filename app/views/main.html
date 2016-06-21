@@ -1,0 +1,48 @@
+<div class="row content">
+  <div class="btn-group btn-group-justified hidden-xs" class="nav nav-tabs" role="tablist">
+    <div class="btn-group" role="group" ng-repeat="day in workoutDays.days">
+      <button type="button" ng-class="day.isActive ? 'active' : ''" active="day.isActive" class="btn btn-default"  href="#{{day.name}}" aria-controls="{{day.name}}" role="tab" data-toggle="tab">{{day.name}}</button>
+    </div>
+  </div>
+
+  <div class="dropdown visible-xs-block">
+    <button class="btn btn-default dropdown-toggle" type="button" role="tablist" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Day Picker
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li ng-repeat="day in workoutDays.days"><a href="#{{day.name}}" aria-controls="{{day.name}}" data-toggle="tab">{{day.name}}</a></li>
+    </ul>
+  </div>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div ng-repeat="day in workoutDays.days" role="tabpanel" active="day.isActive" class="tab-pane" ng-class="{{day.isActive}} ? 'active' : ''" id="{{day.name}}">
+
+      <h1>{{day.name}} {{day.isActive}}</h1>
+
+      <div class="panel panel-default clearfix" ng-repeat="zone in day.zones">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{zone.name}}</h3>
+        </div>
+        <div class="panel-body">
+          <ul class="list-group">
+            <li class="list-group-item col-md-12" ng-repeat="workout in zone.workout">
+              <div class="checkbox">
+                <label ng-class="workout.completed ? 'done' : ''">
+                  <input type="checkbox" ng-model="completed" ng-click="workout.completed = !workout.completed" ng-checked="workout.completed"> <b>{{workout.title}}</b>
+                  <div ng-if="workout.duration != ''">Duration: {{workout.duration}}</div>
+                  <div ng-if="workout.sets != ''">Sets: {{workout.sets}}</div>
+                  <div ng-if="workout.reps != ''">Reps: {{workout.reps}}</div>
+                  <div ng-if="workout.rest != ''">Rest: {{workout.rest}}</div>
+                </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <button class="btn btn-warning" ng-click="revert()">Reset Week</button>
+    </div>
+  </div>
+</div>
