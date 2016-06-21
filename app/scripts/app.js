@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc overview
- * @name todoApp
+ * @name workoutApp
  * @description
- * # todoApp
+ * # workout tracking application
  *
  * Main module of the application.
  */

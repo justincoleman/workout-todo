@@ -8,14 +8,15 @@
  * Controller of the todoApp
  */
 angular.module('workoutApp')
-  .controller('mainCtrl', function ($scope, $localStorage, workouts, $timeout) {
+  .controller('mainCtrl', ['$scope', '$localStorage', 'workouts', '$timeout', function ($scope, $localStorage, workouts, $timeout) {
 
     $scope.workouts = workouts;
-    $localStorage.workoutDays === "" ? $scope.workoutDays = $scope.workouts : $scope.workoutDays = $localStorage.workoutDays;
+    $localStorage.workoutDays === undefined ? $scope.workoutDays = $scope.workouts : $scope.workoutDays = $localStorage.workoutDays;
+    $localStorage.workoutDays = $scope.workoutDays;
+
+    console.log($localStorage.workoutDays);
 
     $scope.$completed = $localStorage;
-
-    $scope.isActive = false;
 
     $scope.revert = function() {
         $scope.workoutDays = $scope.workouts;
@@ -28,14 +29,14 @@ angular.module('workoutApp')
         var d = today.getDay();
         var currentDay = $scope.workoutDays.days[d];
 
-        if (d === currentDay.id) {
-            console.log(1);
-            $scope.workoutDays.days[d].isActive = true;
-        } else {
-            console.log(2);
-            $scope.workoutDays.days.isActive = false;
+        for (var i=0; i<=6;i++){
+            if (i === d) {
+                $scope.workoutDays.days[i].isActive = true;
+            } else {
+                $scope.workoutDays.days[i].isActive = false;
+            }
         }
     };
 
     init();
-  });
+  }]);

@@ -19,7 +19,7 @@
   <div class="tab-content">
     <div ng-repeat="day in workoutDays.days" role="tabpanel" active="day.isActive" class="tab-pane" ng-class="{{day.isActive}} ? 'active' : ''" id="{{day.name}}">
 
-      <h1>{{day.name}} {{day.isActive}}</h1>
+      <h1>{{day.name}}</h1>
 
       <div class="panel panel-default clearfix" ng-repeat="zone in day.zones">
         <div class="panel-heading">
@@ -41,8 +41,9 @@
           </ul>
         </div>
       </div>
-
-      <button class="btn btn-warning" ng-click="revert()">Reset Week</button>
     </div>
+
+    <button class="btn btn-warning" ng-click="revert()">Reset Week</button>
+
   </div>
 </div>
