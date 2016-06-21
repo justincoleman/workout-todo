@@ -1,12 +1,3 @@
-# todo
+# workout todo
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.12.1.
-
-## Build & development
-
-Run `grunt` for building and `grunt serve` for preview.
-
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+This is a simple app I created to help me track my exercising throughout the week. It was build with HTML+Scss+AngularJS. I also implemented [ngStorage](https://github.com/gsklee/ngStorage) to save my progress locally on device.
