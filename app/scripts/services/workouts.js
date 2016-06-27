@@ -12,6 +12,8 @@ angular.module('workoutApp')
                 zones: [
                     {
                         name: "Cardio",
+                        counter: 0,
+                        id: 0,
                         workout: [
                             {
                                 title: "Basketball",
@@ -33,6 +35,8 @@ angular.module('workoutApp')
                 zones: [
                     {
                         name: "Cardio",
+                        counter: 0,
+                        id: 1,
                         workout: [
                             {
                                 title: "Jogging - moderate intensity",
@@ -41,7 +45,7 @@ angular.module('workoutApp')
                                 reps: "",
                                 rest: "",
                                 completed: false
-                            }
+                            },
                         ]
                     }
                 ]
@@ -54,6 +58,8 @@ angular.module('workoutApp')
                 zones: [
                     {
                         name: "Biceps",
+                        counter: 0,
+                        id: 2,
                         workout: [
                             {
                                 title: "Curls",
@@ -107,6 +113,8 @@ angular.module('workoutApp')
                     },
                     {
                         name: "Triceps",
+                        counter: 0,
+                        id: 2,
                         workout: [
                             {
                                 title: "Neutral Grip Press",
@@ -161,6 +169,8 @@ angular.module('workoutApp')
                     },
                     {
                         name: "Core",
+                        counter: 0,
+                        id: 2,
                         workout: [
                             {
                                 title: "Bench Decline Sit-ups",
@@ -182,6 +192,8 @@ angular.module('workoutApp')
                     },
                     {
                         name: "Cardio",
+                        counter: 0,
+                        id: 2,
                         workout: [
                             {
                                 title: "HIIT Running/Walking",
@@ -203,6 +215,8 @@ angular.module('workoutApp')
                 zones: [
                     {
                         name: "Shoulders",
+                        counter: 0,
+                        id: 3,
                         workout: [
                             {
                                 title: "Arnold Press",
@@ -240,6 +254,8 @@ angular.module('workoutApp')
                     },
                     {
                         name: "Back",
+                        counter: 0,
+                        id: 3,
                         workout: [
                             {
                                 title: "Cable Back Row",
@@ -277,6 +293,8 @@ angular.module('workoutApp')
                     },
                     {
                         name: "Core",
+                        counter: 0,
+                        id: 3,
                         workout: [
                             {
                                 title: "Bench Decline Sit-ups",
@@ -298,6 +316,8 @@ angular.module('workoutApp')
                     },
                     {
                         name: "Cardio",
+                        counter: 0,
+                        id: 3,
                         workout: [
                             {
                                 title: "Weighted Dumbbell Walking - 10 minutes",
@@ -319,6 +339,8 @@ angular.module('workoutApp')
                 zones: [
                     {
                         name: "Recovery",
+                        counter: 0,
+                        id: 4,
                         workout: [
                             {
                                 title: "Rest Day",
@@ -340,6 +362,8 @@ angular.module('workoutApp')
                 zones: [
                     {
                         name: "Chest",
+                        counter: 0,
+                        id: 5,
                         workout: [
                             {
                                 title: "Bench Press",
@@ -393,6 +417,8 @@ angular.module('workoutApp')
                     },
                     {
                         name: "Legs",
+                        counter: 0,
+                        id: 5,
                         workout: [
                             {
                                 title: "Weighted Squats",
@@ -422,6 +448,8 @@ angular.module('workoutApp')
                     },
                     {
                         name: "Core",
+                        counter: 0,
+                        id: 5,
                         workout: [
                             {
                                 title: "Bench Decline Sit-ups",
@@ -443,6 +471,8 @@ angular.module('workoutApp')
                     },
                     {
                         name: "Cardio",
+                        counter: 0,
+                        id: 5,
                         workout: [
                             {
                                 title: "High Incline Walking",
@@ -464,6 +494,8 @@ angular.module('workoutApp')
                 zones: [
                     {
                         name: "Recovery",
+                        counter: 0,
+                        id: 6,
                         workout: [
                             {
                                 title: "Rest day!",

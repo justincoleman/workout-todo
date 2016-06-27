@@ -17,20 +17,20 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div ng-repeat="day in workoutDays.days" role="tabpanel" active="day.isActive" class="tab-pane" ng-class="{{day.isActive}} ? 'active' : ''" id="{{day.name}}">
+    <div ng-repeat="day in workoutDays.days"" role="tabpanel" active="day.isActive" class="tab-pane" ng-class="{{day.isActive}} ? 'active' : ''" id="{{day.name}}">
 
       <h1>{{day.name}}</h1>
 
-      <div class="panel panel-default clearfix" ng-repeat="zone in day.zones">
+      <div class="panel panel-default clearfix" ng-repeat="zone in day.zones" ng-class="{'panel-success': zone.counter == zone.workout.length}">
         <div class="panel-heading">
-          <h3 class="panel-title">{{zone.name}}</h3>
+          <h3 class="panel-title">{{zone.name}} <span class="pull-right badge badge-info">{{zone.counter}}/{{zone.workout.length}}</span></h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" ng-class="{'bg-success': zone.counter == zone.workout.length}">
           <ul class="list-group">
             <li class="list-group-item col-md-12" ng-repeat="workout in zone.workout">
               <div class="checkbox">
                 <label ng-class="workout.completed ? 'done' : ''">
-                  <input type="checkbox" ng-model="completed" ng-click="workout.completed = !workout.completed" ng-checked="workout.completed"> <b>{{workout.title}}</b>
+                  <input type="checkbox" ng-model="counter" ng-click="workout.completed = !workout.completed" ng-change="change(workout, {{zone.id}}, $parent.$index)" ng-checked="workout.completed"> <b>{{workout.title}}</b>
                   <div ng-if="workout.duration != ''">Duration: {{workout.duration}}</div>
                   <div ng-if="workout.sets != ''">Sets: {{workout.sets}}</div>
                   <div ng-if="workout.reps != ''">Reps: {{workout.reps}}</div>

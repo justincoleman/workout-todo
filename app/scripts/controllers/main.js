@@ -9,14 +9,26 @@
  */
 angular.module('workoutApp')
   .controller('mainCtrl', ['$scope', '$localStorage', 'workouts', '$timeout', function ($scope, $localStorage, workouts, $timeout) {
+    var _timeout;
 
-    $scope.workouts = workouts;
-    $localStorage.workoutDays === undefined ? $scope.workoutDays = $scope.workouts : $scope.workoutDays = $localStorage.workoutDays;
-    $localStorage.workoutDays = $scope.workoutDays;
+    $scope.setVal = function(source) {
+        $scope.workoutDays = source;
+    };
 
-    console.log($localStorage.workoutDays);
+    $scope.change = function (item, day, index) {
+        if(_timeout){ //if there is already a timeout in process cancel it
+            $timeout.cancel(_timeout);
+        }
 
-    $scope.$completed = $localStorage;
+        _timeout = $timeout(function(){
+            var counter = $scope.workoutDays.days[day].zones[index].counter;
+            if (item.completed === false && counter > 0) {
+                $scope.workoutDays.days[day].zones[index].counter = counter - 1;
+            } else {
+                $scope.workoutDays.days[day].zones[index].counter = counter + 1;
+            }
+        }, 500);
+    };
 
     $scope.revert = function() {
         $scope.workoutDays = $scope.workouts;
@@ -27,7 +39,6 @@ angular.module('workoutApp')
     var init = function () {
         var today = new Date();
         var d = today.getDay();
-        var currentDay = $scope.workoutDays.days[d];
 
         for (var i=0; i<=6;i++){
             if (i === d) {
@@ -37,6 +48,10 @@ angular.module('workoutApp')
             }
         }
     };
+
+    $scope.workouts = workouts;
+    $localStorage.workoutDays === undefined ? $scope.setVal($scope.workouts) : $scope.setVal($localStorage.workoutDays);
+    $localStorage.workoutDays = $scope.workoutDays;
 
     init();
   }]);
