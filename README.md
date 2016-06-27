@@ -4,5 +4,4 @@ This is a simple app I created to help me track my exercising throughout the wee
 
 # pending features
 
-* Add counter to show total done for the day
 * Allow sets/reps/rest to be modified in the app rather than from the factory
