@@ -323,12 +323,7 @@ module.exports = function (grunt) {
 
     htmlmin: {
       dist: {
-        options: {
-          collapseWhitespace: true,
-          conservativeCollapse: true,
-          collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true
-        },
+        options: {},
         files: [{
           expand: true,
           cwd: '<%= yeoman.dist %>',
