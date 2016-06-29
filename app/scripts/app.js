@@ -8,19 +8,10 @@
  *
  * Main module of the application.
  */
- // var app = angular.module('workoutApp', ['ngRoute', 'ngStorage']);
 
-angular
-  .module('workoutApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'ngStorage'
-  ])
-  .config(function ($routeProvider) {
+var app = angular.module('workoutApp', ['ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch','ngStorage']);
+
+app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -34,4 +25,4 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }]);

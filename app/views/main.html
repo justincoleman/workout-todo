@@ -1,13 +1,13 @@
 <div class="row content">
   <div class="btn-group btn-group-justified hidden-xs" class="nav nav-tabs" role="tablist">
     <div class="btn-group" role="group" ng-repeat="day in workoutDays.days">
-      <button type="button" ng-class="day.isActive ? 'active' : ''" active="day.isActive" class="btn btn-default"  href="#{{day.name}}" aria-controls="{{day.name}}" role="tab" data-toggle="tab">{{day.name}}</button>
+      <button type="button" ng-class="day.isActive ? 'active' : ''" active="day.isActive" class="btn btn-default"  href="#{{day.name}}" aria-controls="{{day.name}}" role="tab" data-toggle="tab" ng-click="setActiveNav($event)">{{day.name}}</button>
     </div>
   </div>
 
   <div class="dropdown visible-xs-block">
     <button class="btn btn-default dropdown-toggle" type="button" role="tablist" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      Day Picker
+      Days
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
@@ -54,7 +54,7 @@
                           <h4 class="modal-title text-left" id="imageModalLabel">{{workout.title}}</h4>
                         </div>
                         <div class="modal-body">
-                          <img src="{{workout.img_path}}" alt="{{workout.title}}">
+                          <img ng-src="{{workout.img_path}}" alt="{{workout.title}}">
                         </div>
                       </div>
                     </div>

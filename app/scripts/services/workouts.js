@@ -1,13 +1,11 @@
 'use strict';
 
-angular.module('workoutApp')
-    .factory('workouts', [function () {
+app.factory('workouts', [function () {
     var workouts = {
         days: [
             {
                 id: 0,
                 name: 'Sunday',
-                status: 'inactive',
                 isActive: false,
                 zones: [
                     {
@@ -30,7 +28,6 @@ angular.module('workoutApp')
             {
                 id: 1,
                 name: 'Monday',
-                status: 'inactive',
                 isActive: false,
                 zones: [
                     {
@@ -53,7 +50,6 @@ angular.module('workoutApp')
             {
                 id: 2,
                 name: 'Tuesday',
-                status: 'inactive',
                 isActive: false,
                 zones: [
                     {
@@ -224,7 +220,6 @@ angular.module('workoutApp')
             {
                 id: 3,
                 name: 'Wednesday',
-                status: 'inactive',
                 isActive: false,
                 zones: [
                     {
@@ -358,7 +353,6 @@ angular.module('workoutApp')
             {
                 id: 4,
                 name: 'Thursday',
-                status: 'inactive',
                 isActive: false,
                 zones: [
                     {
@@ -381,7 +375,6 @@ angular.module('workoutApp')
             {
                 id: 5,
                 name: 'Friday',
-                status: 'inactive',
                 isActive: false,
                 zones: [
                     {
@@ -524,7 +517,6 @@ angular.module('workoutApp')
             {
                 id: 6,
                 name: 'Saturday',
-                status: 'inactive',
                 isActive: false,
                 zones: [
                     {

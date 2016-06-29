@@ -10,7 +10,9 @@
   "strict": true,
   "undef": true,
   "unused": true,
+  "expr": true,
   "globals": {
-    "angular": false
+    "angular": false,
+    "$": false
   }
 }

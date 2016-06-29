@@ -12,6 +12,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 body {
   padding: 0;
+  overflow-y: scroll; // to prevent screen jumping when certain days are selected
 }
 
 /* Everything gets side spacing for mobile first views */
