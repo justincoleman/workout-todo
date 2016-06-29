@@ -40,8 +40,8 @@ angular.module('workoutApp')
                         workout: [
                             {
                                 title: "Jogging - moderate intensity",
-                                duration: 30,
-                                sets: 1,
+                                duration: "30 minutes",
+                                sets: "",
                                 reps: "",
                                 rest: "",
                                 completed: false
@@ -62,50 +62,56 @@ angular.module('workoutApp')
                         id: 2,
                         workout: [
                             {
-                                title: "Curls",
+                                title: "Zottman Curls",
+                                img_path: "images/workouts/zottman-curl.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "15, 12, 8, 8",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             },
                             {
                                 title: "Drag Curl",
+                                img_path: "images/workouts/drag-curl.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             },
                             {
                                 title: "Hammer Curl",
+                                img_path: "images/workouts/hammer-curl.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             },
                             {
                                 title: "Cheat Curl",
+                                img_path: "images/workouts/cheat-curl.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "8",
+                                reps: 5,
                                 rest: 120,
                                 completed: false
                             },
                             {
                                 title: "Preacher Curl",
+                                img_path: "images/workouts/preacher-curl.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "8",
+                                reps: 8,
                                 rest: 60,
                                 completed: false
                             },
                             {
                                 title: "Cable Bicep Curl",
+                                img_path: "images/workouts/cable-bicep-curl.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             }
@@ -118,50 +124,56 @@ angular.module('workoutApp')
                         workout: [
                             {
                                 title: "Neutral Grip Press",
+                                img_path: "images/workouts/neutral-grip-press.gif",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             },
 
                             {
                                 title: "Lying Triceps Extension",
+                                img_path: "images/workouts/lying-triceps-extension.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 120,
                                 completed: false
                             },
                             {
                                 title: "Tate Press",
+                                img_path: "images/workouts/tate-press.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             },
                             {
                                 title: "Underhand Kickback",
+                                img_path: "images/workouts/underhand-kickback.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "8",
+                                reps: 10,
                                 rest: 120,
                                 completed: false
                             },
                             {
-                                title: "One Arm Overhead Exentsion",
+                                title: "One Arm Overhead Extension",
+                                img_path: "images/workouts/one-arm-overhead-extension.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 120,
                                 completed: false
                             },
                             {
-                                title: "Cable Triceps Pulldown",
+                                title: "Triceps Cable Push-down",
+                                img_path: "images/workouts/triceps-cable-pushdown.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             }
@@ -174,17 +186,19 @@ angular.module('workoutApp')
                         workout: [
                             {
                                 title: "Bench Decline Sit-ups",
+                                img_path: "images/workouts/bench-decline-situps.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             },
                             {
-                                title: "Cable Wood-chop (upward)",
+                                title: "Reverse Woodchoppers",
+                                img_path: "images/workouts/reverse-woodchopper.png",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 8,
                                 rest: 60,
                                 completed: false
                             }
@@ -197,10 +211,10 @@ angular.module('workoutApp')
                         workout: [
                             {
                                 title: "HIIT Running/Walking",
-                                duration: 10,
-                                sets: 1,
+                                duration: "10 minutes",
+                                sets: "",
                                 reps: "",
-                                rest: 60,
+                                rest: "",
                                 completed: false
                             }
                         ]
@@ -220,33 +234,37 @@ angular.module('workoutApp')
                         workout: [
                             {
                                 title: "Arnold Press",
+                                img_path: "images/workouts/arnold-press.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             },
                             {
                                 title: "Neutral Grip Overhead Press",
+                                img_path: "images/workouts/neutral-grip-overhead-press.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             },
                             {
                                 title: "Lateral Raises",
+                                img_path: "images/workouts/lateral-raises.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             },
                             {
                                 title: "Rear Delt Raises",
+                                img_path: "images/workouts/rear-delt-raises.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             }
@@ -258,34 +276,38 @@ angular.module('workoutApp')
                         id: 3,
                         workout: [
                             {
-                                title: "Cable Back Row",
+                                title: "Face Pulls",
+                                img_path: "images/workouts/face-pulls.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             },
                             {
                                 title: "Single Arm Row",
+                                img_path: "images/workouts/one-arm-dumbbell-row.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             },
                             {
-                                title: "Seated Row",
+                                title: "Straight Arm Pull-down",
+                                img_path: "images/workouts/straight-arm-pulldown.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             },
                             {
-                                title: "Standing Cable Row",
+                                title: "Back fly",
+                                img_path: "images/workouts/dumbbell-reverse-fly.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             }
@@ -298,17 +320,19 @@ angular.module('workoutApp')
                         workout: [
                             {
                                 title: "Bench Decline Sit-ups",
+                                img_path: "images/workouts/bench-decline-situps.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             },
                             {
-                                title: "Cable Wood-chop (level)",
+                                title: "Cable Twist",
+                                img_path: "images/workouts/cable-twist.jpg",
                                 duration: "",
                                 sets: 4,
-                                reps: "10",
+                                reps: 10,
                                 rest: 60,
                                 completed: false
                             }
@@ -322,9 +346,9 @@ angular.module('workoutApp')
                             {
                                 title: "Weighted Dumbbell Walking - 10 minutes",
                                 duration: "10 minutes",
-                                sets: 4,
-                                reps: "10",
-                                rest: 60,
+                                sets: "",
+                                reps: "",
+                                rest: "",
                                 completed: false
                             },
                         ]
@@ -366,23 +390,8 @@ angular.module('workoutApp')
                         id: 5,
                         workout: [
                             {
-                                title: "Bench Press",
-                                duration: "",
-                                sets: 4,
-                                reps: 10,
-                                rest: "60 seconds",
-                                completed: false
-                            },
-                            {
-                                title: "Incline Flyes",
-                                duration: "",
-                                sets: 4,
-                                reps: 10,
-                                rest: "60 seconds",
-                                completed: false
-                            },
-                            {
                                 title: "Piston Press",
+                                img_path: "images/workouts/piston-press.jpg",
                                 duration: "",
                                 sets: 4,
                                 reps: 10,
@@ -390,7 +399,26 @@ angular.module('workoutApp')
                                 completed: false
                             },
                             {
-                                title: "Hammer Press",
+                                title: "Incline Fly",
+                                img_path: "images/workouts/incline-fly.jpg",
+                                duration: "",
+                                sets: 4,
+                                reps: 10,
+                                rest: "60 seconds",
+                                completed: false
+                            },
+                            {
+                                title: "Decline Bench Press",
+                                img_path: "images/workouts/decline-bench-press.jpg",
+                                duration: "",
+                                sets: 4,
+                                reps: 10,
+                                rest: "60 seconds",
+                                completed: false
+                            },
+                            {
+                                title: "Incline Bench Press",
+                                img_path: "images/workouts/incline-bench-press.jpg",
                                 duration: "",
                                 sets: 4,
                                 reps: 10,
@@ -399,6 +427,7 @@ angular.module('workoutApp')
                             },
                             {
                                 title: "Push-ups",
+                                img_path: "images/workouts/dumbbell-pushups.png",
                                 duration: "",
                                 sets: 5,
                                 reps: 10,
@@ -406,7 +435,8 @@ angular.module('workoutApp')
                                 completed: false
                             },
                             {
-                                title: "Decline Bench Press",
+                                title: "Hammer Press",
+                                img_path: "images/workouts/hammer-press.jpg",
                                 duration: "",
                                 sets: 4,
                                 reps: 10,
@@ -422,6 +452,7 @@ angular.module('workoutApp')
                         workout: [
                             {
                                 title: "Weighted Squats",
+                                img_path: "images/workouts/dumbbell-squat.jpg",
                                 duration: "",
                                 sets: 4,
                                 reps: 10,
@@ -430,6 +461,7 @@ angular.module('workoutApp')
                             },
                             {
                                 title: "Weighted Lunges",
+                                img_path: "images/workouts/dumbbell-lunges.jpg",
                                 duration: "",
                                 sets: 4,
                                 reps: 10,
@@ -438,6 +470,7 @@ angular.module('workoutApp')
                             },
                             {
                                 title: "Weighted Calf Raises",
+                                img_path: "images/workouts/calf-raises.jpg",
                                 duration: "",
                                 sets: 4,
                                 reps: 10,
@@ -453,6 +486,7 @@ angular.module('workoutApp')
                         workout: [
                             {
                                 title: "Bench Decline Sit-ups",
+                                img_path: "images/workouts/bench-decline-situps.jpg",
                                 duration: "",
                                 sets: 4,
                                 reps: 10,
@@ -460,7 +494,8 @@ angular.module('workoutApp')
                                 completed: false
                             },
                             {
-                                title: "Cable Wood-chop (Downward)",
+                                title: "Woodchoppers",
+                                img_path: "images/workouts/woodchopper.jpg",
                                 duration: "",
                                 sets: 4,
                                 reps: 10,

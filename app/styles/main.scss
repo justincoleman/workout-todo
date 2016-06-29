@@ -14,7 +14,7 @@ body {
   padding: 0;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
+/* Everything gets side spacing for mobile first views */
 .header,
 .content,
 .footer {
@@ -83,6 +83,46 @@ body {
 .done {
   text-decoration: line-through;
   color: #bbb;
+}
+
+.no-margin-top {
+  margin-top: 0 !important;
+}
+.no-pad-right {
+  padding-right: 0 !important;
+}
+.no-pad-left {
+  padding-left: 0 !important;
+}
+
+.modal img {
+  width: 100%;
+}
+
+.panel-heading, .panel-body, li {
+  transition: all ease-in 0.3s;
+}
+
+.panel {
+  transition: all ease-in 0.3s;
+
+  .checkbox {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  &.panel-success {
+    background: $panel-success-heading-bg;
+
+    li {
+      background: $panel-success-heading-bg;
+      border-color: darken($panel-success-heading-bg, 10%);
+
+      .done {
+        color: darken($panel-success-heading-bg, 30%);
+      }
+    }
+  }
 }
 
 /* Responsive: Portrait tablets and up */

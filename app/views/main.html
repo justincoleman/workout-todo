@@ -19,16 +19,19 @@
   <div class="tab-content">
     <div ng-repeat="day in workoutDays.days"" role="tabpanel" active="day.isActive" class="tab-pane" ng-class="{{day.isActive}} ? 'active' : ''" id="{{day.name}}">
 
-      <h1>{{day.name}}</h1>
+      <h1>{{day.name}} <span class="pull-right"><button class="btn btn-warning" ng-click="revert()">Reset Week</button></span></h1>
 
       <div class="panel panel-default clearfix" ng-repeat="zone in day.zones" ng-class="{'panel-success': zone.counter == zone.workout.length}">
         <div class="panel-heading">
-          <h3 class="panel-title">{{zone.name}} <span class="pull-right badge badge-info">{{zone.counter}}/{{zone.workout.length}}</span></h3>
+          <h3 class="panel-title">
+            {{zone.name}} <span class="pull-right badge badge-info">{{zone.counter}}/{{zone.workout.length}}</span>
+          </h3>
         </div>
         <div class="panel-body" ng-class="{'bg-success': zone.counter == zone.workout.length}">
           <ul class="list-group">
-            <li class="list-group-item col-md-12" ng-repeat="workout in zone.workout">
-              <div class="checkbox">
+            <li class="list-group-item col-md-12 clearfix" ng-repeat="workout in zone.workout">
+
+              <div class="checkbox col-xs-11">
                 <label ng-class="workout.completed ? 'done' : ''">
                   <input type="checkbox" ng-model="counter" ng-click="workout.completed = !workout.completed" ng-change="change(workout, {{zone.id}}, $parent.$index)" ng-checked="workout.completed"> <b>{{workout.title}}</b>
                   <div ng-if="workout.duration != ''">Duration: {{workout.duration}}</div>
@@ -37,13 +40,34 @@
                   <div ng-if="workout.rest != ''">Rest: {{workout.rest}}</div>
                 </label>
               </div>
+
+              <div class="col-xs-1 no-pad-left no-pad-right text-right" ng-if="workout.img_path != undefined">
+                <button class="btn btn-link btn-md" data-toggle="modal" data-target="#imageModal{{zone.id}}{{$parent.$parent.$index}}{{$index}}"><i class="glyphicon glyphicon-info-sign"></i></button>
+
+                <!-- Modal -->
+                <div>
+                  <div class="modal fade" id="imageModal{{zone.id}}{{$parent.$parent.$index}}{{$index}}" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title text-left" id="imageModalLabel">{{workout.title}}</h4>
+                        </div>
+                        <div class="modal-body">
+                          <img src="{{workout.img_path}}" alt="{{workout.title}}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
       </div>
     </div>
 
-    <button class="btn btn-warning" ng-click="revert()">Reset Week</button>
+    <button class="btn btn-warning pull-right" ng-click="revert()">Reset Week</button>
 
   </div>
 </div>
