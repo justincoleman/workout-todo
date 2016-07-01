@@ -16,12 +16,12 @@
   </div>
 
   <!-- Tab panes -->
-  <div class="tab-content">
+  <div class="tab-content clearfix">
     <div ng-repeat="day in workoutDays.days"" role="tabpanel" active="day.isActive" class="tab-pane" ng-class="{{day.isActive}} ? 'active' : ''" id="{{day.name}}">
 
       <h1>{{day.name}} <span class="pull-right"><button class="btn btn-warning" ng-click="revert()">Reset Week</button></span></h1>
 
-      <div class="panel panel-default clearfix" ng-repeat="zone in day.zones" ng-class="{'panel-success': zone.counter == zone.workout.length}">
+      <div class="panel {{zone.counter == zone.workout.length ? 'panel-success': 'panel-default' }} clearfix" ng-repeat="zone in day.zones">
         <div class="panel-heading">
           <h3 class="panel-title">
             {{zone.name}} <span class="pull-right badge badge-info">{{zone.counter}}/{{zone.workout.length}}</span>
@@ -45,17 +45,15 @@
                 <button class="btn btn-link btn-md" data-toggle="modal" data-target="#imageModal{{zone.id}}{{$parent.$parent.$index}}{{$index}}"><i class="glyphicon glyphicon-info-sign"></i></button>
 
                 <!-- Modal -->
-                <div>
-                  <div class="modal fade" id="imageModal{{zone.id}}{{$parent.$parent.$index}}{{$index}}" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title text-left" id="imageModalLabel">{{workout.title}}</h4>
-                        </div>
-                        <div class="modal-body">
-                          <img ng-src="{{workout.img_path}}" alt="{{workout.title}}">
-                        </div>
+                <div class="modal fade" id="imageModal{{zone.id}}{{$parent.$parent.$index}}{{$index}}" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-left" id="imageModalLabel">{{workout.title}}</h4>
+                      </div>
+                      <div class="modal-body">
+                        <img ng-src="{{workout.img_path}}" alt="{{workout.title}}">
                       </div>
                     </div>
                   </div>
