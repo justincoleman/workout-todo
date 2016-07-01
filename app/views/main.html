@@ -19,7 +19,7 @@
   <div class="tab-content clearfix">
     <div ng-repeat="day in workoutDays.days"" role="tabpanel" active="day.isActive" class="tab-pane" ng-class="{{day.isActive}} ? 'active' : ''" id="{{day.name}}">
 
-      <h1>{{day.name}} <span class="pull-right"><button class="btn btn-warning" ng-click="revert()">Reset Week</button></span></h1>
+      <h1 class="clearfix">{{day.name}} <span class="pull-right"><button class="btn btn-warning" ng-click="revert()">Reset Week</button></span></h1>
 
       <div class="panel {{zone.counter == zone.workout.length ? 'panel-success': 'panel-default' }} clearfix" ng-repeat="zone in day.zones">
         <div class="panel-heading">
