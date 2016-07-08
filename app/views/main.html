@@ -19,7 +19,7 @@
   <div class="tab-content clearfix">
     <div ng-repeat="day in workoutDays.days"" role="tabpanel" active="day.isActive" class="tab-pane" ng-class="{{day.isActive}} ? 'active' : ''" id="{{day.name}}">
 
-      <h1 class="clearfix">{{day.name}} <span class="pull-right"><button class="btn btn-warning" ng-click="revert()">Reset Week</button></span></h1>
+      <h1 class="clearfix">{{day.name}} <span class="pull-right"><button class="btn btn-warning" ng-click="revertBtn()">Reset Week</button></span></h1>
 
       <div class="panel {{zone.counter == zone.workout.length ? 'panel-success': 'panel-default' }} clearfix" ng-repeat="zone in day.zones">
         <div class="panel-heading">
@@ -33,7 +33,8 @@
 
               <div class="checkbox col-xs-11">
                 <label ng-class="workout.completed ? 'done' : ''">
-                  <input type="checkbox" ng-model="counter" ng-click="workout.completed = !workout.completed" ng-change="change(workout, {{zone.id}}, $parent.$index)" ng-checked="workout.completed"> <b>{{workout.title}}</b>
+                  <input type="checkbox" ng-model="counter" ng-change="change(workout, zone.id, $parent.$index)" ng-click="workout.completed = !workout.completed" ng-checked="workout.completed" ng-class="workout.completed ? 'ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched' : ''" id="input{{zone.id}}{{$parent.$parent.$index}}{{$index}}">
+                  <b>{{workout.title}}</b>
                   <div ng-if="workout.duration != ''">Duration: {{workout.duration}}</div>
                   <div ng-if="workout.sets != ''">Sets: {{workout.sets}}</div>
                   <div ng-if="workout.reps != ''">Reps: {{workout.reps}}</div>
@@ -64,8 +65,5 @@
         </div>
       </div>
     </div>
-
-    <button class="btn btn-warning pull-right" ng-click="revert()">Reset Week</button>
-
   </div>
 </div>

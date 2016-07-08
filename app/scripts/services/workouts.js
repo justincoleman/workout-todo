@@ -6,7 +6,7 @@ app.factory('workouts', [function () {
             {
                 id: 0,
                 name: 'Sunday',
-                isActive: false,
+                isActive: true,
                 zones: [
                     {
                         name: "Cardio",

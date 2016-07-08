@@ -5,3 +5,4 @@ This is a simple app I created to help me track my exercising throughout the wee
 # pending features
 
 * Allow sets/reps/rest to be modified in the app rather than from the factory
+* Allow user to organize workout plan to their needs (drag/drop ideally)
