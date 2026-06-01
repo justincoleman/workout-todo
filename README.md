@@ -1,6 +1,6 @@
 # Dumbbell Workout Tracker
 
-An installable **Progressive Web App** for the *Frank Dumbbell-Only* workout plan.
+An installable **Progressive Web App** for the *Frankoman Dumbbell-Only Split*.
 Browse the plan day-by-day, run a guided workout one exercise at a time, log the
 weight and reps you actually did, and watch your progress trend on charts over time.
 
@@ -57,4 +57,4 @@ images/workouts/        exercise images
 
 ## Credits
 
-Workout program: [Frank's Dumbbell Only Workout](https://www.muscleandstrength.com/workouts/frank-dumbbell-only-workout) on Muscle & Strength.
+Workout program: [Frankoman Dumbbell Only Split](https://www.muscleandstrength.com/workouts/frankoman-dumbbell-only-split.html) by Team Muscle & Strength.

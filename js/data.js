@@ -1,8 +1,13 @@
-/* Workout plan data — adapted from the "Frank Dumbbell Only" program
- * (muscleandstrength.com). Each strength exercise has a stable `id` (slug)
- * so progress is tracked per movement even when it appears on multiple days.
+/* Workout plan data — the "Frankoman Dumbbell Only Split" exactly as published
+ * by Team Muscle & Strength (build muscle, beginner, 3 days/week, 10 weeks).
+ * https://www.muscleandstrength.com/workouts/frankoman-dumbbell-only-split.html
  *
- * Split: lifting on Mon / Wed / Fri, cardio on Tue / Thu / Sat, rest Sunday.
+ * Lifting Mon / Wed / Fri; cardio Tue / Thu / Sat; rest Sunday.
+ *
+ * `reps` is a per-set array matching the published rep scheme
+ *   (e.g. [12, 10, 10, 8] = set 1 → 12 reps, set 2 → 10, …).
+ * Rest times are NOT specified in the source PDF — sensible defaults are used
+ * (90s for the main compound lifts, 60s for isolation) and can be ignored.
  *
  * Exercise types:
  *   "strength" — logged with weight + reps per set (charted over time)
@@ -12,8 +17,8 @@
 const IMG = (file) => `images/workouts/${file}`;
 
 const WORKOUT_PLAN = {
-  name: "Frank's Dumbbell-Only Workout",
-  source: "https://www.muscleandstrength.com/workouts/frank-dumbbell-only-workout",
+  name: "Frankoman Dumbbell-Only Split",
+  source: "https://www.muscleandstrength.com/workouts/frankoman-dumbbell-only-split.html",
   // Order matches JS Date.getDay() (0 = Sunday) so "today" maps directly.
   days: [
     {
@@ -21,44 +26,28 @@ const WORKOUT_PLAN = {
       name: "Sunday",
       focus: "Recovery",
       groups: [
-        {
-          name: "Recovery",
-          exercises: [{ id: "rest-sunday", title: "Rest Day", type: "rest" }],
-        },
+        { name: "Recovery", exercises: [{ id: "rest-sunday", title: "Rest Day", type: "rest" }] },
       ],
     },
     {
       id: "monday",
       name: "Monday",
-      focus: "Arms & Core",
+      focus: "Chest & Triceps",
       groups: [
         {
-          name: "Biceps",
+          name: "Chest",
           exercises: [
-            { id: "zottman-curl", title: "Zottman Curls", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("zottman-curl.jpg") },
-            { id: "drag-curl", title: "Drag Curl", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("drag-curl.jpg") },
-            { id: "hammer-curl", title: "Hammer Curl", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("hammer-curl.jpg") },
-            { id: "cheat-curl", title: "Cheat Curl", type: "strength", sets: 4, reps: 5, rest: 120, img: IMG("cheat-curl.jpg") },
-            { id: "preacher-curl", title: "Preacher Curl", type: "strength", sets: 4, reps: 8, rest: 60, img: IMG("preacher-curl.jpg") },
-            { id: "cable-bicep-curl", title: "Cable Bicep Curl", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("cable-bicep-curl.jpg") },
+            { id: "incline-dumbbell-bench-press", title: "Incline Dumbbell Bench Press", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("incline-bench-press.jpg") },
+            { id: "dumbbell-bench-press", title: "Dumbbell Bench Press", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("hammer-press.jpg") },
+            { id: "dumbbell-flys", title: "Dumbbell Flys", type: "strength", sets: 3, reps: [12, 12, 12], rest: 60, img: IMG("incline-fly.jpg") },
           ],
         },
         {
           name: "Triceps",
           exercises: [
-            { id: "neutral-grip-press", title: "Neutral Grip Press", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("neutral-grip-press.gif") },
-            { id: "lying-triceps-extension", title: "Lying Triceps Extension", type: "strength", sets: 4, reps: 10, rest: 120, img: IMG("lying-triceps-extension.jpg") },
-            { id: "tate-press", title: "Tate Press", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("tate-press.jpg") },
-            { id: "underhand-kickback", title: "Underhand Kickback", type: "strength", sets: 4, reps: 10, rest: 120, img: IMG("underhand-kickback.jpg") },
-            { id: "one-arm-overhead-extension", title: "One Arm Overhead Extension", type: "strength", sets: 4, reps: 10, rest: 120, img: IMG("one-arm-overhead-extension.jpg") },
-            { id: "triceps-cable-pushdown", title: "Triceps Cable Push-down", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("triceps-cable-pushdown.jpg") },
-          ],
-        },
-        {
-          name: "Core",
-          exercises: [
-            { id: "bench-decline-situps", title: "Bench Decline Sit-ups", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("bench-decline-situps.jpg") },
-            { id: "reverse-woodchopper", title: "Reverse Woodchoppers", type: "strength", sets: 4, reps: 8, rest: 60, img: IMG("reverse-woodchopper.png") },
+            { id: "dumbbell-skullcrusher", title: "Dumbbell Skullcrusher", type: "strength", sets: 3, reps: [12, 12, 12], rest: 60, img: IMG("lying-triceps-extension.jpg") },
+            { id: "dumbbell-tricep-kickback", title: "Dumbbell Tricep Kickback", type: "strength", sets: 3, reps: [12, 12, 12], rest: 60, img: IMG("underhand-kickback.jpg") },
+            { id: "one-arm-seated-dumbbell-extension", title: "One Arm Seated Dumbbell Extension", type: "strength", sets: 3, reps: [12, 12, 12], rest: 60, img: IMG("one-arm-overhead-extension.jpg") },
           ],
         },
       ],
@@ -68,42 +57,28 @@ const WORKOUT_PLAN = {
       name: "Tuesday",
       focus: "Cardio",
       groups: [
-        {
-          name: "Cardio",
-          exercises: [
-            { id: "jogging", title: "Jogging — moderate intensity", type: "cardio", duration: "30 min" },
-          ],
-        },
+        { name: "Cardio", exercises: [{ id: "jogging", title: "Jogging — moderate intensity", type: "cardio", duration: "30 min" }] },
       ],
     },
     {
       id: "wednesday",
       name: "Wednesday",
-      focus: "Shoulders & Back",
+      focus: "Back & Biceps",
       groups: [
-        {
-          name: "Shoulders",
-          exercises: [
-            { id: "arnold-press", title: "Arnold Press", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("arnold-press.jpg") },
-            { id: "neutral-grip-overhead-press", title: "Neutral Grip Overhead Press", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("neutral-grip-overhead-press.jpg") },
-            { id: "lateral-raises", title: "Lateral Raises", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("lateral-raises.jpg") },
-            { id: "rear-delt-raises", title: "Rear Delt Raises", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("rear-delt-raises.jpg") },
-          ],
-        },
         {
           name: "Back",
           exercises: [
-            { id: "face-pulls", title: "Face Pulls", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("face-pulls.jpg") },
-            { id: "single-arm-row", title: "Single Arm Row", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("one-arm-dumbbell-row.jpg") },
-            { id: "straight-arm-pulldown", title: "Straight Arm Pull-down", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("straight-arm-pulldown.jpg") },
-            { id: "back-fly", title: "Back Fly", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("dumbbell-reverse-fly.jpg") },
+            { id: "one-arm-dumbbell-row", title: "One Arm Dumbbell Row", type: "strength", sets: 5, reps: [12, 10, 10, 8, 6], rest: 90, img: IMG("one-arm-dumbbell-row.jpg") },
+            { id: "bent-over-dumbbell-row", title: "Bent Over Dumbbell Row", type: "strength", sets: 5, reps: [12, 10, 10, 8, 6], rest: 90, img: null },
+            { id: "dumbbell-pullover", title: "Dumbbell Pullover", type: "strength", sets: 2, reps: [12, 10], rest: 60, img: IMG("straight-arm-pulldown.jpg") },
           ],
         },
         {
-          name: "Core",
+          name: "Biceps",
           exercises: [
-            { id: "bench-decline-situps", title: "Bench Decline Sit-ups", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("bench-decline-situps.jpg") },
-            { id: "cable-twist", title: "Cable Twist", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("cable-twist.jpg") },
+            { id: "incline-dumbbell-curl", title: "Incline Dumbbell Curl", type: "strength", sets: 3, reps: [10, 10, 10], rest: 60, img: IMG("preacher-curl.jpg") },
+            { id: "standing-dumbbell-curl", title: "Standing Dumbbell Curl", type: "strength", sets: 3, reps: [10, 10, 10], rest: 60, img: IMG("drag-curl.jpg") },
+            { id: "cross-body-hammer-curl", title: "Cross Body Hammer Curl", type: "strength", sets: 2, reps: [10, 10], rest: 60, img: IMG("hammer-curl.jpg") },
           ],
         },
       ],
@@ -113,43 +88,42 @@ const WORKOUT_PLAN = {
       name: "Thursday",
       focus: "Cardio",
       groups: [
-        {
-          name: "Cardio",
-          exercises: [
-            { id: "hiit", title: "HIIT Running / Walking", type: "cardio", duration: "20 min" },
-          ],
-        },
+        { name: "Cardio", exercises: [{ id: "hiit", title: "HIIT Running / Walking", type: "cardio", duration: "20 min" }] },
       ],
     },
     {
       id: "friday",
       name: "Friday",
-      focus: "Chest & Legs",
+      focus: "Legs & Shoulders",
       groups: [
         {
-          name: "Chest",
+          name: "Quads",
           exercises: [
-            { id: "piston-press", title: "Piston Press", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("piston-press.jpg") },
-            { id: "incline-fly", title: "Incline Fly", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("incline-fly.jpg") },
-            { id: "decline-bench-press", title: "Decline Bench Press", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("decline-bench-press.jpg") },
-            { id: "incline-bench-press", title: "Incline Bench Press", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("incline-bench-press.jpg") },
-            { id: "pushups", title: "Push-ups", type: "strength", sets: 5, reps: 10, rest: 60, img: IMG("dumbbell-pushups.png") },
-            { id: "hammer-press", title: "Hammer Press", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("hammer-press.jpg") },
+            { id: "dumbbell-lunge", title: "Dumbbell Lunge", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("dumbbell-lunges.jpg") },
+            { id: "dumbbell-step-up", title: "Dumbbell Step Up", type: "strength", sets: 3, reps: [12, 12, 12], rest: 90, img: null },
+            { id: "dumbbell-squat", title: "Dumbbell Squat", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("dumbbell-squat.jpg") },
           ],
         },
         {
-          name: "Legs",
+          name: "Hamstrings",
           exercises: [
-            { id: "weighted-squats", title: "Weighted Squats", type: "strength", sets: 4, reps: 10, rest: 120, img: IMG("dumbbell-squat.jpg") },
-            { id: "weighted-lunges", title: "Weighted Lunges", type: "strength", sets: 4, reps: 10, rest: 120, img: IMG("dumbbell-lunges.jpg") },
-            { id: "calf-raises", title: "Weighted Calf Raises", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("calf-raises.jpg") },
+            { id: "dumbbell-stiff-leg-deadlift", title: "Dumbbell Stiff Leg Deadlift", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: null },
           ],
         },
         {
-          name: "Core",
+          name: "Calves",
           exercises: [
-            { id: "bench-decline-situps", title: "Bench Decline Sit-ups", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("bench-decline-situps.jpg") },
-            { id: "woodchopper", title: "Woodchoppers", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("woodchopper.jpg") },
+            { id: "seated-dumbbell-calf-raise", title: "Seated Dumbbell Calf Raise", type: "strength", sets: 2, reps: [15, 12], rest: 60, img: null },
+            { id: "dumbbell-standing-calf-raise", title: "Dumbbell Standing Calf Raise", type: "strength", sets: 2, reps: [12, 10], rest: 60, img: IMG("calf-raises.jpg") },
+          ],
+        },
+        {
+          name: "Shoulders",
+          exercises: [
+            { id: "standing-dumbbell-press", title: "Standing Dumbbell Press", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("neutral-grip-overhead-press.jpg") },
+            { id: "dumbbell-lateral-raise", title: "Dumbbell Lateral Raise", type: "strength", sets: 3, reps: [12, 10, 10], rest: 60, img: IMG("lateral-raises.jpg") },
+            { id: "bent-over-dumbbell-reverse-fly", title: "Bent Over Dumbbell Reverse Fly", type: "strength", sets: 3, reps: [12, 10, 10], rest: 60, img: IMG("dumbbell-reverse-fly.jpg") },
+            { id: "dumbbell-shrug", title: "Dumbbell Shrug", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 60, img: null },
           ],
         },
       ],
@@ -159,12 +133,7 @@ const WORKOUT_PLAN = {
       name: "Saturday",
       focus: "Cardio",
       groups: [
-        {
-          name: "Cardio",
-          exercises: [
-            { id: "basketball", title: "Basketball", type: "cardio", duration: "45 min" },
-          ],
-        },
+        { name: "Cardio", exercises: [{ id: "basketball", title: "Basketball", type: "cardio", duration: "45 min" }] },
       ],
     },
   ],
@@ -186,4 +155,20 @@ function getDay(dayId) {
 /** Total number of trackable (non-rest) exercises in a day. */
 function dayWorkExerciseCount(day) {
   return dayExercises(day).filter((e) => e.type !== "rest").length;
+}
+
+/** Per-set target reps as an array (normalises number | array). */
+function repScheme(ex) {
+  if (Array.isArray(ex.reps)) return ex.reps.slice();
+  if (ex.reps != null) return Array(ex.sets || 1).fill(ex.reps);
+  return [];
+}
+
+/** Human-readable rep scheme, e.g. "12, 10, 10, 8" or "12". */
+function formatReps(reps) {
+  if (Array.isArray(reps)) {
+    // Collapse a uniform scheme ([12,12,12]) down to a single number.
+    return reps.every((r) => r === reps[0]) ? String(reps[0]) : reps.join(", ");
+  }
+  return String(reps ?? "");
 }

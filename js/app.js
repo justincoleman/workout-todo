@@ -205,7 +205,7 @@
   function exerciseCard(ex) {
     const target =
       ex.type === "strength"
-        ? `${ex.sets} × ${ex.reps} &middot; ${ex.rest}s rest`
+        ? `${ex.sets} × ${formatReps(ex.reps)} &middot; ${ex.rest}s rest`
         : ex.type === "cardio"
         ? `Cardio &middot; ${h(ex.duration || "")}`
         : "Rest";
@@ -234,6 +234,7 @@
     const exercises = dayExercises(day)
       .filter((e) => e.type !== "rest")
       .map((ex) => {
+        const scheme = ex.type === "strength" ? repScheme(ex) : [];
         const setCount = ex.type === "strength" ? ex.sets : 1;
         const last = ex.type === "strength" ? Store.lastEntryFor(ex.id) : null;
         const sets = [];
@@ -241,7 +242,7 @@
           const prev = last && last.sets[i];
           sets.push({
             weight: prev && prev.weight != null ? prev.weight : "",
-            reps: ex.type === "strength" ? ex.reps : "",
+            reps: ex.type === "strength" ? (scheme[i] ?? "") : "",
           });
         }
         return {
@@ -252,7 +253,7 @@
           img: ex.img || null,
           duration: ex.duration || null,
           targetSets: ex.sets || null,
-          targetReps: ex.reps || null,
+          targetReps: scheme, // per-set target reps
           rest: ex.rest || null,
           sets,
           done: false,
@@ -305,14 +306,14 @@
             <div class="set-field">
               <label>Reps</label>
               <input type="number" inputmode="numeric" step="1" min="0" data-set="${i}" data-field="reps"
-                value="${set.reps === "" || set.reps == null ? "" : h(set.reps)}" placeholder="${h(ex.targetReps || "")}">
+                value="${set.reps === "" || set.reps == null ? "" : h(set.reps)}" placeholder="${h((ex.targetReps && ex.targetReps[i]) ?? "")}">
             </div>
           </div>`
         )
         .join("");
       body = `
         ${ex.img ? `<img class="session-img" src="${h(ex.img)}" alt="">` : ""}
-        <div class="session-target">Target: ${ex.targetSets} sets × ${ex.targetReps} reps &middot; ${ex.rest}s rest</div>
+        <div class="session-target">Target: ${ex.targetSets} sets × ${formatReps(ex.targetReps)} reps &middot; ${ex.rest}s rest</div>
         <div class="sets">${rows}</div>
         <div class="set-tools">
           <button class="btn btn-ghost btn-sm" data-add-set>+ Add set</button>
@@ -662,7 +663,8 @@
       const s = Store.getActive();
       if (s) {
         const ex = s.exercises[Math.min(s.current || 0, s.exercises.length - 1)];
-        ex.sets.push({ weight: "", reps: ex.targetReps || "" });
+        const sch = ex.targetReps || [];
+        ex.sets.push({ weight: "", reps: sch[sch.length - 1] ?? "" });
         Store.setActive(s);
         renderSession();
       }
