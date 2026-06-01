@@ -2,6 +2,8 @@
  * (muscleandstrength.com). Each strength exercise has a stable `id` (slug)
  * so progress is tracked per movement even when it appears on multiple days.
  *
+ * Split: lifting on Mon / Wed / Fri, cardio on Tue / Thu / Sat, rest Sunday.
+ *
  * Exercise types:
  *   "strength" — logged with weight + reps per set (charted over time)
  *   "cardio"   — logged as completed, optional duration
@@ -17,32 +19,17 @@ const WORKOUT_PLAN = {
     {
       id: "sunday",
       name: "Sunday",
-      focus: "Cardio",
+      focus: "Recovery",
       groups: [
         {
-          name: "Cardio",
-          exercises: [
-            { id: "basketball", title: "Basketball", type: "cardio", duration: "Open" },
-          ],
+          name: "Recovery",
+          exercises: [{ id: "rest-sunday", title: "Rest Day", type: "rest" }],
         },
       ],
     },
     {
       id: "monday",
       name: "Monday",
-      focus: "Cardio",
-      groups: [
-        {
-          name: "Cardio",
-          exercises: [
-            { id: "jogging", title: "Jogging — moderate intensity", type: "cardio", duration: "30 min" },
-          ],
-        },
-      ],
-    },
-    {
-      id: "tuesday",
-      name: "Tuesday",
       focus: "Arms & Core",
       groups: [
         {
@@ -74,10 +61,17 @@ const WORKOUT_PLAN = {
             { id: "reverse-woodchopper", title: "Reverse Woodchoppers", type: "strength", sets: 4, reps: 8, rest: 60, img: IMG("reverse-woodchopper.png") },
           ],
         },
+      ],
+    },
+    {
+      id: "tuesday",
+      name: "Tuesday",
+      focus: "Cardio",
+      groups: [
         {
           name: "Cardio",
           exercises: [
-            { id: "hiit", title: "HIIT Running / Walking", type: "cardio", duration: "10 min" },
+            { id: "jogging", title: "Jogging — moderate intensity", type: "cardio", duration: "30 min" },
           ],
         },
       ],
@@ -112,22 +106,18 @@ const WORKOUT_PLAN = {
             { id: "cable-twist", title: "Cable Twist", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("cable-twist.jpg") },
           ],
         },
-        {
-          name: "Cardio",
-          exercises: [
-            { id: "weighted-walking", title: "Weighted Dumbbell Walking", type: "cardio", duration: "10 min" },
-          ],
-        },
       ],
     },
     {
       id: "thursday",
       name: "Thursday",
-      focus: "Recovery",
+      focus: "Cardio",
       groups: [
         {
-          name: "Recovery",
-          exercises: [{ id: "rest-thursday", title: "Rest Day", type: "rest" }],
+          name: "Cardio",
+          exercises: [
+            { id: "hiit", title: "HIIT Running / Walking", type: "cardio", duration: "20 min" },
+          ],
         },
       ],
     },
@@ -162,22 +152,18 @@ const WORKOUT_PLAN = {
             { id: "woodchopper", title: "Woodchoppers", type: "strength", sets: 4, reps: 10, rest: 60, img: IMG("woodchopper.jpg") },
           ],
         },
-        {
-          name: "Cardio",
-          exercises: [
-            { id: "incline-walking", title: "High Incline Walking", type: "cardio", duration: "20 min" },
-          ],
-        },
       ],
     },
     {
       id: "saturday",
       name: "Saturday",
-      focus: "Recovery",
+      focus: "Cardio",
       groups: [
         {
-          name: "Recovery",
-          exercises: [{ id: "rest-saturday", title: "Rest Day", type: "rest" }],
+          name: "Cardio",
+          exercises: [
+            { id: "basketball", title: "Basketball", type: "cardio", duration: "45 min" },
+          ],
         },
       ],
     },
