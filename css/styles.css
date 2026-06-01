@@ -123,7 +123,9 @@ p { line-height: 1.5; }
 .big-emoji { font-size: 3rem; margin-bottom: 8px; }
 
 /* ---- week strip ---- */
-.week-strip { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+/* Top/side padding leaves room for the ✓ badge that overhangs each pill —
+   overflow-x:auto also clips vertically, so without it the badge gets cut off. */
+.week-strip { display: flex; gap: 8px; overflow-x: auto; padding: 10px 6px 8px 0; -webkit-overflow-scrolling: touch; }
 .week-pill {
   flex: 0 0 auto;
   min-width: 66px;
