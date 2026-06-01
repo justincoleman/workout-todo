@@ -58,3 +58,5 @@ images/workouts/        exercise images
 ## Credits
 
 Workout program: [Frankoman Dumbbell Only Split](https://www.muscleandstrength.com/workouts/frankoman-dumbbell-only-split.html) by Team Muscle & Strength.
+
+Some exercise images are from the public-domain [free-exercise-db](https://github.com/yuhonas/free-exercise-db) (Unlicense).

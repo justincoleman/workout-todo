@@ -37,9 +37,9 @@ const WORKOUT_PLAN = {
         {
           name: "Chest",
           exercises: [
-            { id: "dumbbell-floor-press", title: "Dumbbell Floor Press", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: null }, // no-bench sub for Incline DB Bench Press
+            { id: "dumbbell-floor-press", title: "Dumbbell Floor Press", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("dumbbell-floor-press.jpg") }, // no-bench sub for Incline DB Bench Press
             { id: "weighted-pushup", title: "Weighted Push-up", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("dumbbell-pushups.png") }, // no-bench sub for DB Bench Press
-            { id: "floor-dumbbell-flys", title: "Floor Dumbbell Flys", type: "strength", sets: 3, reps: [12, 12, 12], rest: 60, img: null }, // no-bench sub for DB Flys
+            { id: "floor-dumbbell-flys", title: "Floor Dumbbell Flys", type: "strength", sets: 3, reps: [12, 12, 12], rest: 60, img: IMG("floor-dumbbell-flys.jpg") }, // no-bench sub for DB Flys
           ],
         },
         {
@@ -69,8 +69,8 @@ const WORKOUT_PLAN = {
           name: "Back",
           exercises: [
             { id: "one-arm-dumbbell-row", title: "One Arm Dumbbell Row", type: "strength", sets: 5, reps: [12, 10, 10, 8, 6], rest: 90, img: IMG("one-arm-dumbbell-row.jpg") },
-            { id: "bent-over-dumbbell-row", title: "Bent Over Dumbbell Row", type: "strength", sets: 5, reps: [12, 10, 10, 8, 6], rest: 90, img: null },
-            { id: "floor-dumbbell-pullover", title: "Floor Dumbbell Pullover", type: "strength", sets: 2, reps: [12, 10], rest: 60, img: null }, // no-bench sub for DB Pullover
+            { id: "bent-over-dumbbell-row", title: "Bent Over Dumbbell Row", type: "strength", sets: 5, reps: [12, 10, 10, 8, 6], rest: 90, img: IMG("bent-over-dumbbell-row.jpg") },
+            { id: "floor-dumbbell-pullover", title: "Floor Dumbbell Pullover", type: "strength", sets: 2, reps: [12, 10], rest: 60, img: IMG("floor-dumbbell-pullover.jpg") }, // no-bench sub for DB Pullover
           ],
         },
         {
@@ -100,20 +100,20 @@ const WORKOUT_PLAN = {
           name: "Quads",
           exercises: [
             { id: "dumbbell-lunge", title: "Dumbbell Lunge", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("dumbbell-lunges.jpg") },
-            { id: "dumbbell-step-up", title: "Dumbbell Step Up", type: "strength", sets: 3, reps: [12, 12, 12], rest: 90, img: null },
+            { id: "dumbbell-step-up", title: "Dumbbell Step Up", type: "strength", sets: 3, reps: [12, 12, 12], rest: 90, img: IMG("dumbbell-step-up.jpg") },
             { id: "dumbbell-squat", title: "Dumbbell Squat", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("dumbbell-squat.jpg") },
           ],
         },
         {
           name: "Hamstrings",
           exercises: [
-            { id: "dumbbell-stiff-leg-deadlift", title: "Dumbbell Stiff Leg Deadlift", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: null },
+            { id: "dumbbell-stiff-leg-deadlift", title: "Dumbbell Stiff Leg Deadlift", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("dumbbell-stiff-leg-deadlift.jpg") },
           ],
         },
         {
           name: "Calves",
           exercises: [
-            { id: "seated-dumbbell-calf-raise", title: "Seated Dumbbell Calf Raise", type: "strength", sets: 2, reps: [15, 12], rest: 60, img: null },
+            { id: "seated-dumbbell-calf-raise", title: "Seated Dumbbell Calf Raise", type: "strength", sets: 2, reps: [15, 12], rest: 60, img: IMG("seated-dumbbell-calf-raise.jpg") },
             { id: "dumbbell-standing-calf-raise", title: "Dumbbell Standing Calf Raise", type: "strength", sets: 2, reps: [12, 10], rest: 60, img: IMG("calf-raises.jpg") },
           ],
         },
@@ -123,7 +123,7 @@ const WORKOUT_PLAN = {
             { id: "standing-dumbbell-press", title: "Standing Dumbbell Press", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("neutral-grip-overhead-press.jpg") },
             { id: "dumbbell-lateral-raise", title: "Dumbbell Lateral Raise", type: "strength", sets: 3, reps: [12, 10, 10], rest: 60, img: IMG("lateral-raises.jpg") },
             { id: "bent-over-dumbbell-reverse-fly", title: "Bent Over Dumbbell Reverse Fly", type: "strength", sets: 3, reps: [12, 10, 10], rest: 60, img: IMG("dumbbell-reverse-fly.jpg") },
-            { id: "dumbbell-shrug", title: "Dumbbell Shrug", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 60, img: null },
+            { id: "dumbbell-shrug", title: "Dumbbell Shrug", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 60, img: IMG("dumbbell-shrug.jpg") },
           ],
         },
       ],
