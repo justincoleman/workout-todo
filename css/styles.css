@@ -162,6 +162,34 @@ p { line-height: 1.5; }
 
 .sticky-action { margin-top: 18px; }
 
+/* ---- completed state ---- */
+.day-summary.is-complete { border-color: var(--accent); background: rgba(74, 222, 128, 0.08); }
+.complete-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.check-badge {
+  flex: 0 0 auto;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent); color: var(--accent-ink);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; font-weight: 800;
+}
+.split-actions { display: flex; gap: 10px; margin-top: 10px; }
+.split-actions .btn { flex: 1; }
+.done-tag {
+  font-size: 0.7rem; font-weight: 700; vertical-align: middle;
+  color: var(--accent-ink); background: var(--accent);
+  padding: 3px 8px; border-radius: 99px; margin-left: 6px;
+}
+.week-pill { position: relative; }
+.week-pill.is-done { border-color: var(--accent); }
+.wp-check {
+  position: absolute; top: -6px; right: -6px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--accent); color: var(--accent-ink);
+  font-size: 0.7rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 2px var(--bg);
+}
+
 /* ---- session ---- */
 .session-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
 .session-head .back { margin: 0; }

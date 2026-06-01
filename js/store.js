@@ -139,11 +139,42 @@ const Store = (() => {
     return JSON.stringify({ sessions: getSessions(), settings: getSettings() }, null, 2);
   }
 
+  /* ---- completion queries ---- */
+  function isSameDay(a, b) {
+    const da = new Date(a), db = new Date(b);
+    return (
+      da.getFullYear() === db.getFullYear() &&
+      da.getMonth() === db.getMonth() &&
+      da.getDate() === db.getDate()
+    );
+  }
+
+  // Completed sessions saved on the same calendar day as `dateLike` (newest first).
+  function sessionsForDate(dateLike) {
+    return getSessions().filter((s) => isSameDay(s.date, dateLike));
+  }
+
+  // Set of dayIds that have a completed session in the same Sunday-start week
+  // as `refDate`.
+  function completedDayIdsForWeek(refDate) {
+    const ref = new Date(refDate);
+    const start = new Date(ref.getFullYear(), ref.getMonth(), ref.getDate() - ref.getDay());
+    const end = new Date(start);
+    end.setDate(start.getDate() + 7);
+    const set = new Set();
+    getSessions().forEach((s) => {
+      const d = new Date(s.date);
+      if (d >= start && d < end) set.add(s.dayId);
+    });
+    return set;
+  }
+
   return {
     getSettings, setSettings,
     getSessions, saveSession, deleteSession,
     getActive, setActive, clearActive,
     exerciseHistory, lastEntryFor, loggedExercises,
+    sessionsForDate, completedDayIdsForWeek,
     exportAll,
   };
 })();

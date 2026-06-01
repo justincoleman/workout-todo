@@ -87,6 +87,10 @@
     const active = Store.getActive();
     const exCount = dayWorkExerciseCount(day);
     const isRest = day.groups.length === 1 && day.groups[0].exercises[0].type === "rest";
+    const weekDone = Store.completedDayIdsForWeek(new Date());
+    // Today counts as done only if a session for *today's* day was logged today.
+    const doneToday = Store.sessionsForDate(new Date()).filter((s) => s.dayId === day.id);
+    const isDone = doneToday.length > 0 && !active;
 
     let resumeBanner = "";
     if (active) {
@@ -101,6 +105,45 @@
       </div>`;
     }
 
+    let mainCard;
+    if (isRest) {
+      mainCard = `<div class="card rest-card">
+        <div class="big-emoji">🛌</div>
+        <h2>Rest &amp; recover</h2>
+        <p class="muted">No lifting scheduled today. Let those muscles rebuild.</p>
+      </div>`;
+    } else if (isDone) {
+      const sess = doneToday[0];
+      const logged = (sess.entries || []).filter((e) => e.sets.length);
+      const vol = logged.reduce(
+        (sum, e) => sum + e.sets.reduce((a, st) => a + (st.weight || 0) * (st.reps || 0), 0),
+        0
+      );
+      mainCard = `<div class="card day-summary is-complete">
+        <div class="complete-head">
+          <div class="check-badge">✓</div>
+          <div>
+            <div class="banner-title">Workout complete!</div>
+            <div class="muted">${logged.length} exercises · ${vol.toLocaleString()} ${unit()} volume logged</div>
+          </div>
+        </div>
+        <a class="btn btn-primary btn-block" href="#/progress">View progress</a>
+        <div class="split-actions">
+          <a class="btn btn-ghost" href="#/day/${day.id}">View exercises</a>
+          <button class="btn btn-ghost" data-start="${day.id}">Do it again</button>
+        </div>
+      </div>`;
+    } else {
+      mainCard = `<div class="card day-summary">
+        <div class="day-stats">
+          <div><strong>${exCount}</strong><span>exercises</span></div>
+          <div><strong>${day.groups.length}</strong><span>groups</span></div>
+        </div>
+        ${active ? "" : `<button class="btn btn-primary btn-block" data-start="${day.id}">Start workout</button>`}
+        <a class="btn btn-ghost btn-block" href="#/day/${day.id}">View exercises</a>
+      </div>`;
+    }
+
     appEl.innerHTML = `
       <header class="screen-head">
         <div class="eyebrow">${fmtDate(new Date())}</div>
@@ -108,32 +151,15 @@
         <div class="muted">${h(day.focus)}</div>
       </header>
       ${resumeBanner}
-      ${
-        isRest
-          ? `<div class="card rest-card">
-              <div class="big-emoji">🛌</div>
-              <h2>Rest &amp; recover</h2>
-              <p class="muted">No lifting scheduled today. Let those muscles rebuild.</p>
-            </div>`
-          : `<div class="card day-summary">
-              <div class="day-stats">
-                <div><strong>${exCount}</strong><span>exercises</span></div>
-                <div><strong>${day.groups.length}</strong><span>groups</span></div>
-              </div>
-              ${
-                active
-                  ? ""
-                  : `<button class="btn btn-primary btn-block" data-start="${day.id}">Start workout</button>`
-              }
-              <a class="btn btn-ghost btn-block" href="#/day/${day.id}">View exercises</a>
-            </div>`
-      }
+      ${mainCard}
       <h3 class="section-title">This week</h3>
       <div class="week-strip">
         ${WORKOUT_PLAN.days
           .map((d, i) => {
             const rest = d.groups[0].exercises[0].type === "rest";
-            return `<a href="#/day/${d.id}" class="week-pill ${i === todayIndex() ? "is-today" : ""} ${rest ? "is-rest" : ""}">
+            const done = weekDone.has(d.id);
+            return `<a href="#/day/${d.id}" class="week-pill ${i === todayIndex() ? "is-today" : ""} ${rest ? "is-rest" : ""} ${done ? "is-done" : ""}">
+              ${done ? `<span class="wp-check">✓</span>` : ""}
               <span class="wp-day">${h(d.name.slice(0, 3))}</span>
               <span class="wp-focus">${rest ? "Rest" : h(d.focus)}</span>
             </a>`;
@@ -171,11 +197,12 @@
     if (!day) return go("#/");
     const isRest = day.groups[0].exercises[0].type === "rest";
     const active = Store.getActive();
+    const doneThisWeek = Store.completedDayIdsForWeek(new Date()).has(dayId);
 
     appEl.innerHTML = `
       <header class="screen-head">
         <a class="back" href="#/plan">‹ Plan</a>
-        <h1>${h(day.name)}</h1>
+        <h1>${h(day.name)} ${doneThisWeek ? `<span class="done-tag">✓ done</span>` : ""}</h1>
         <div class="muted">${h(day.focus)}</div>
       </header>
       ${
@@ -197,7 +224,7 @@
           ? ""
           : active && active.dayId === dayId
           ? `<a class="btn btn-primary btn-block sticky-action" href="#/session">Resume workout</a>`
-          : `<button class="btn btn-primary btn-block sticky-action" data-start="${day.id}">Start workout</button>`
+          : `<button class="btn btn-primary btn-block sticky-action" data-start="${day.id}">${doneThisWeek ? "Start again" : "Start workout"}</button>`
       }
     `;
   }
