@@ -38,7 +38,7 @@ const WORKOUT_PLAN = {
           name: "Chest",
           exercises: [
             { id: "dumbbell-floor-press", title: "Dumbbell Floor Press", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("dumbbell-floor-press.jpg") }, // no-bench sub for Incline DB Bench Press
-            { id: "weighted-pushup", title: "Weighted Push-up", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("dumbbell-pushups.png") }, // no-bench sub for DB Bench Press
+            { id: "neutral-grip-floor-press", title: "Neutral-Grip Dumbbell Floor Press", type: "strength", sets: 4, reps: [12, 10, 10, 8], rest: 90, img: IMG("neutral-grip-floor-press.jpg") }, // no-bench sub for DB Bench Press (palms-in floor press)
             { id: "floor-dumbbell-flys", title: "Floor Dumbbell Flys", type: "strength", sets: 3, reps: [12, 12, 12], rest: 60, img: IMG("floor-dumbbell-flys.jpg") }, // no-bench sub for DB Flys
           ],
         },

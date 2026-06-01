@@ -1,7 +1,7 @@
 /* Service worker — offline-first app shell with runtime caching for images.
  * Bump CACHE_VERSION whenever the shell files change to force an update.
  */
-const CACHE_VERSION = "dumbbell-workout-v5";
+const CACHE_VERSION = "dumbbell-workout-v6";
 const CORE_ASSETS = [
   "./",
   "index.html",
